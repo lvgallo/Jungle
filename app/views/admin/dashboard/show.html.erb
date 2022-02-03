@@ -1,2 +1,18 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Admin Dashboard</h1>
+
+
+<table class="table">
+  <tr>
+    <td>Products</td>
+    <td>Total count: <%= @products%> </td>
+    <td><%=link_to '<button type="button" class="btn btn-primary">Check the Products List</button>'.html_safe, [:admin, :products]%></td>
+  </tr>
+</table>
+
+<table class="table">
+  <tr>
+    <td>Categories</td>
+    <td>Total count: <%= @categories%> </td>
+    <td><%=link_to '<button type="button" class="btn btn-primary">Check the Categories List</button>'.html_safe, [:admin, :products]%></td>
+  </tr>
+</table>
