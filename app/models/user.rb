@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  #downcase email used for create user and login
   scope :ci_find, lambda { |attribute, value| where("lower(#{attribute})=?",value.downcase).first}
 
   validates :first_name, presence: true
@@ -11,9 +12,9 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def self.authenticate_with_credentials (email, password)
-    # downcase = all letters lowercase
     # strip = removes trailing whitespace 
     email = email.strip
+
     @user = User.ci_find('email', email)
    
     # If the user exists AND the password entered is correct.
