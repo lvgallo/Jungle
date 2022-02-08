@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
   describe 'Validations' do
 
     it 'should be created successfully will all required fields' do 
@@ -8,7 +9,7 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-   it 'should fail if first name is missing' do 
+    it 'should fail if first name is missing' do 
       @user = User.create(last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
       expect(@user).to be_invalid
     end 
@@ -41,4 +42,14 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should' do
+      @user1 = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
+      @login = User.authenticate_with_credentials('lucy@lee.com','lucylee123')
+      expect(@login).to be_truthy
+    end
+  end
+
+
 end
