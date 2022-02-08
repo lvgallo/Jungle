@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
       expect(@user).to be_invalid
     end 
 
-    it 'should fail if email is not unique - not case sensitive' do 
+    it 'should fail if email is unique - not case sensitive' do 
       @user1 = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
       @user2 = User.create(first_name: 'Lulu', last_name: 'Leeson', email: 'LUCY@LEE.com', password:'lululee123', password_confirmation: 'lululee123')
       expect(@user2).to be_invalid
@@ -44,11 +44,27 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it 'should' do
-      @user1 = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
+    before do 
+      @user = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
+    end
+
+    it 'should authenticate a user with email and password' do
       @login = User.authenticate_with_credentials('lucy@lee.com','lucylee123')
       expect(@login).to be_truthy
     end
+
+    it 'should authenticate successfully if a visitor types in a few spaces before and/or after their email address' do
+      @login = User.authenticate_with_credentials('   lucy@lee.com  ','lucylee123')
+      expect(@login).to be_truthy
+    end
+
+    it 'should authenticate successfully using wrong case for email' do
+      @user1 = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'eXample@domain.COM', password:'lucylee123', password_confirmation: 'lucylee123')
+      @login = User.authenticate_with_credentials('EXAMPLe@DOMAIN.CoM', @user1.password)
+      expect(@login).to be_truthy
+    end
+
+
   end
 
 
