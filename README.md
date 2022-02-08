@@ -1,6 +1,7 @@
 # Jungle
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+Lighthouse Labs - Web Development - W09 - W10
 
 ## Additional Steps for Apple M1 Machines
 
@@ -31,3 +32,13 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+## Screenshots of main features
+!["Main Page"](https://github.com/lvgallo/Jungle/blob/master/docs/main_page.png)
+!["Signup Page"](https://github.com/lvgallo/Jungle/blob/master/docs/sign_up_page.png)
+!["Login Page"](https://github.com/lvgallo/Jungle/blob/master/docs/login_page.png)
+!["Products"](https://github.com/lvgallo/Jungle/blob/master/docs/products.png)
+!["Product description"](https://github.com/lvgallo/Jungle/blob/master/docs/product_description.png)
+!["Add a new product](https://github.com/lvgallo/Jungle/blob/master/docs/new_product.png)
+!["My cart"](https://github.com/lvgallo/Jungle/blob/master/docs/cart.png)
+!["Admin Dashboard"](https://github.com/lvgallo/Jungle/blob/master/docs/admin_dashboard.png)
