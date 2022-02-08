@@ -29,11 +29,16 @@ RSpec.describe User, type: :model do
       expect(@user).to be_invalid
     end 
 
-    it 'should fail if email' do 
+    it 'should fail if email is not unique - not case sensitive' do 
       @user1 = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucylee123', password_confirmation: 'lucylee123')
       @user2 = User.create(first_name: 'Lulu', last_name: 'Leeson', email: 'LUCY@LEE.com', password:'lululee123', password_confirmation: 'lululee123')
       expect(@user2).to be_invalid
     end 
+
+    it 'should fail if password has less than 6 characters' do 
+      @user = User.create(first_name: 'Lucy', last_name: 'Lee', email: 'lucy@lee.com', password:'lucy', password_confirmation: 'lucy')
+      expect(@user).to be_invalid
+    end
 
   end
 end
