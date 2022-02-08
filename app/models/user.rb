@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   def self.authenticate_with_credentials (email, password)
     # downcase = all letters lowercase
     # strip = removes trailing whitespace 
-    email = email.downcase.strip
+    email = email.strip
     @user = User.ci_find('email', email)
    
     # If the user exists AND the password entered is correct.
